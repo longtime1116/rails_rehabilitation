@@ -6,7 +6,7 @@
 </div>
   <h3>アカウント</h3>
   <% if login? %>
-    <%= link_to "マイページ", user_path(current_user), class: "btn btn-lg btn-primary" %>
+    <%= link_to "アカウント情報", user_path(current_user), class: "btn btn-lg btn-primary" %>
     <%= link_to "ログアウト", logout_path, class: "btn btn-lg btn-primary" %>
   <% else %>
     <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-primary" %>
