@@ -8,12 +8,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params(params))
-    if @user.save
-      redirect_to @user
-    else
-      render 'new'
-    end
+    user = SetupUserService.call(user_params(params))
+    render 'new' if user.nil?
+    redirect_to user
   end
 
   def show
