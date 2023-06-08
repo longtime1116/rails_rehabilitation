@@ -4,16 +4,25 @@
   <h2> eBookの投稿&販売を行うサンプルアプリ </h2>
 
 </div>
-  <h3>共通</h3>
-  <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+  <h3>アカウント</h3>
+  <% if login? %>
+    <%= link_to "マイページ", user_path(current_user), class: "btn btn-lg btn-primary" %>
+    <%= link_to "ログアウト", logout_path, class: "btn btn-lg btn-primary" %>
+  <% else %>
+    <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
+  <h3>eBookを楽しみたい方</h3>
   <%= link_to "eBook検索", '#', class: "btn btn-lg btn-primary" %>
-  <h3>クリエイター</h3>
-  <%= link_to "マイページ", '#', class: "btn btn-lg btn-primary" %>
-  <%= link_to "eBook投稿", '#', class: "btn btn-lg btn-primary" %>
-  <h3>カスタマー</h3>
-  <%= link_to "マイページ", '#', class: "btn btn-lg btn-primary" %>
-  <%= link_to "カート", '#', class: "btn btn-lg btn-primary" %>
-  <%= link_to "ライセンス", '#', class: "btn btn-lg btn-primary" %>
+  <%= link_to "カート閲覧", '#', class: "btn btn-lg btn-primary" %>
+  <%= link_to "ライセンス購入", '#', class: "btn btn-lg btn-primary" %>
+  <h3>クリエイター専用</h3>
+  <% if true #current_creator.present? %>
+    <%= link_to "クリエイターマイページ", '#', class: "btn btn-lg btn-primary" %>
+    <%= link_to "eBook投稿", '#', class: "btn btn-lg btn-primary" %>
+  <% else %>
+    <%= link_to "クリエイター登録", '#', class: "btn btn-lg btn-primary" %>
+  <% end %>
 
 
 <%#= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org/' %>
