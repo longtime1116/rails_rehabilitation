@@ -5,26 +5,29 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def auth
+    @auth ||= Authenticator.new(session)
+  end
+
   def login(user)
-    session[:user_id] = user.id
+    auth.login(user)
   end
 
   def logout
-    session.delete(:user_id)
-    @current_user = nil
+    auth.logout
   end
 
   def login?
-    current_user.present?
+    auth.login?
   end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= auth.current_user
   end
 
   def current_creator
     return unless current_user
 
-    @current_creator ||= Creator.find_by(user_id: current_user.id)
+    @current_creator ||= current_user.creator
   end
 end
