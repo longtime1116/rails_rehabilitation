@@ -1,4 +1,4 @@
-# 支援サブドメインに位置するものとみなし、modelに置く
+# 支援サブドメインに位置するものとみなし、libに置く
 class Authenticator
   def initialize(session)
     @session = session
