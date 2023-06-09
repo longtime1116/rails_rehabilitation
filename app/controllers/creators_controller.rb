@@ -1,6 +1,6 @@
 class CreatorsController < ApplicationController
   def new
-    redirect_to login_path unless login?
+    redirect_to login_path unless logged_in?
     redirect_to creator_path(current_creator) if current_creator
     @creator = Creator.new
   end

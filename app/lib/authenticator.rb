@@ -12,11 +12,11 @@ class Authenticator
     @session.delete(:user_id)
   end
 
-  def login?
+  def logged_in?
     @session[:user_id].present?
   end
 
   def current_user
-    User.find_by(id: @session[:user_id]) if login?
+    User.find_by(id: @session[:user_id]) if logged_in?
   end
 end
