@@ -17,11 +17,11 @@
   <%= link_to "カート閲覧", '#', class: "btn btn-lg btn-primary" %>
   <%= link_to "ライセンス購入", '#', class: "btn btn-lg btn-primary" %>
   <h3>クリエイター専用</h3>
-  <% if true #current_creator.present? %>
-    <%= link_to "クリエイターマイページ", '#', class: "btn btn-lg btn-primary" %>
+  <% if current_creator.present? %>
+    <%= link_to "クリエイターマイページ", creator_path(current_creator), class: "btn btn-lg btn-primary" %>
     <%= link_to "eBook投稿", '#', class: "btn btn-lg btn-primary" %>
   <% else %>
-    <%= link_to "クリエイター登録", '#', class: "btn btn-lg btn-primary" %>
+    <%= link_to "クリエイター登録", new_creator_path, class: "btn btn-lg btn-primary" %>
   <% end %>
 
 

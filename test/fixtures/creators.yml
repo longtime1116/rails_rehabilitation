@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: "User1"
-  email: "user1@example.co"
-  password_digest: "hoge"
+#one:
+#  user_id: one
+#
+#two:
+#  user_id: two

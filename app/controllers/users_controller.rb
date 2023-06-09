@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
-  def index
-    redirect_to root_path
-  end
-
   def new
     @user = User.new
   end
 
   def create
-    user = SetupUserService.call(user_params(params))
-    render 'new' if user.nil?
-    redirect_to user
+    @user = SetupUserService.call(user_params(params))
+    if @user.persisted?
+      login(@user)
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   def show

@@ -1,17 +1,20 @@
 class SetupUserService
   private_class_method :new
-  def self.call(params)
-    new.call(params)
+  def initialize(params)
+    @user = User.new(params)
   end
 
-  def call(params)
-    user = User.new(params)
-    user.transaction do
-      user.save!
-      Customer.new(user_id: user.id).save!
+  def self.call(params)
+    new(params).call
+  end
+
+  def call
+    ActiveRecord::Base.transaction do
+      @user.save!
+      Customer.create!(user_id: @user.id)
     end
-    user
-  rescue StandardError => e
-    nil
+    @user
+  rescue ActiveRecord::RecordInvalid
+    @user
   end
 end

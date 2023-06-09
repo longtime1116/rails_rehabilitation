@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :login?
   helper_method :current_user
+  helper_method :current_creator
 
   private
 
@@ -19,5 +20,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def current_creator
+    return unless current_user
+
+    @current_creator ||= Creator.find_by(user_id: current_user.id)
   end
 end

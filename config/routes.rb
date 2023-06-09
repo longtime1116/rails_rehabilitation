@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  resources :users, only: %i[index show create]
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  resources :users, only: %i[show create]
+  resources :creators, only: %i[show new create]
 end
