@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
     user = SetupUserService.call(user_params(params))
     render 'new' if user.nil?
+    login(user)
     redirect_to user
   end
 
