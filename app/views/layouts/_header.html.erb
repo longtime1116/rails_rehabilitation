@@ -3,8 +3,8 @@
     <%= link_to "eBooker", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <% if login? %>
-          app/views/static_pages/home.html.erb<li><%= link_to "アカウント情報", user_path(current_user) %></li>
+        <% if logged_in? %>
+          <li><%= link_to "アカウント情報", user_path(current_user) %></li>
           <li><%= link_to "ログアウト", logout_path %></li>
         <% else %>
           <li><%= link_to "アカウント作成", signup_path %></li>
