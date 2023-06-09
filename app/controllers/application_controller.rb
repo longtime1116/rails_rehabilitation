@@ -26,8 +26,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_creator
-    return unless current_user
+    @current_creator ||= current_user&.creator
+  end
 
-    @current_creator ||= current_user.creator
+  def current_customer
+    @current_customer ||= current_user&.customer
   end
 end
