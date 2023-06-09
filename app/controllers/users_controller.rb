@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: %i[new create]
   before_action :verify_qualified_user, only: :show
   def new
     @user = User.new
